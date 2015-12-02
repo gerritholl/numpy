@@ -3523,6 +3523,10 @@ class MaskedArray(ndarray):
     fill_value = property(fget=get_fill_value, fset=set_fill_value,
                           doc="Filling value.")
 
+    @property
+    def itemsize(self):
+        return self.data.itemsize + self.mask.itemsize
+
     def filled(self, fill_value=None):
         """
         Return a copy of self, with masked values filled with a given value.
